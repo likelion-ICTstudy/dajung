@@ -12,10 +12,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         input = br.readLine();
 
-        for(int len = input.length(); len >= 2; len--) {
-            for(int i = 0; i < input.length() - len + 1; i++) {
-                kmp(input.substring(i, i+len));
-            }
+//        for(int len = input.length(); len >= 2; len--) {
+//            for(int i = 0; i < input.length() - len + 1; i++) {
+//                kmp(input.substring(i, i+len));
+//            }
+//        }
+        for(int i = 0; i < input.length(); i++) {
+            kmp(input.substring(i, input.length()));
         }
         if(max <= 1)
             System.out.println("0");
@@ -24,8 +27,10 @@ public class Main {
     }
 
     public static void kmp(String pattern) {
+//        System.out.println(pattern);
         //최대길이 테이블 구하기
         int j = 0, i = 1;
+//        int max = 0;
         int[] arr = new int[pattern.length()];
         for(i =  1; i < arr.length; i++) {
             while(j > 0 && pattern.charAt(i) != pattern.charAt(j)) {
